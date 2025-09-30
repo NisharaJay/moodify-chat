@@ -30,4 +30,7 @@ npm run dev
 ```
 
 ##### Backend setup
-Make sure your backend API is running at [http://localhost:8000/suggest].
+Make sure your backend API is running at [http://localhost:8000/suggest]
+```bash
+pip install -r requirements.txt
+uvicorn backend.app:app --reload --port 8000
