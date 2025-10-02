@@ -15,10 +15,9 @@ export default function MoodifyChat() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const endRef = useRef(null);
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [messages]);
-
-  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   const sendMessage = async (text) => {
     if (!text.trim()) return;
@@ -27,8 +26,9 @@ export default function MoodifyChat() {
     try {
       const data = await (await fetch(`${BACKEND_URL}/suggest`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })).json();
       setMessages(prev => [...prev, { type: "bot", text: data.text, songs: data.songs || [], timestamp: new Date() }]);
-    } catch { setMessages(prev => [...prev, { type: "bot", text: "Oops! Something went wrong.", songs: [], timestamp: new Date() }]); }
-    finally { setIsTyping(false); }
+    } catch {
+      setMessages(prev => [...prev, { type: "bot", text: "Oops! Something went wrong.", songs: [], timestamp: new Date() }]);
+    } finally { setIsTyping(false); }
   };
 
   return (
@@ -39,13 +39,8 @@ export default function MoodifyChat() {
           <h1 className="text-4xl font-bold text-white">Moodify</h1>
         </div>
         <p className="text-purple-300 mb-6">Your Personal Music Mood Companion</p>
-
         <div className="flex flex-wrap justify-center gap-2 mb-4">
-          {quickMoods.map(m => (
-            <button key={m.label} onClick={() => sendMessage(m.query)} className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-white hover:bg-white/20 transition-all">
-              <span className="mr-1">{m.icon}</span>{m.label}
-            </button>
-          ))}
+          {quickMoods.map(m => <button key={m.label} onClick={() => sendMessage(m.query)} className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-white hover:bg-white/20 transition-all"><span className="mr-1">{m.icon}</span>{m.label}</button>)}
         </div>
         <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden">
           <div className="h-[470px] overflow-y-auto p-4 space-y-3">
