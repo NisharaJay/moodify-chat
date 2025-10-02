@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
-from .scripts.chatbot import suggest_song
+from backend.scripts.chatbot import suggest_song
 
 #FastAPI Setup
 app = FastAPI()
