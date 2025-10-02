@@ -4,8 +4,7 @@ Moodify is an AI-powered music mood companion that recommends songs based on you
 #### Features
 - Conversational chat interface for mood-based music suggestions.
 - Quick mood buttons for instant recommendations (Happy, Sad, Energetic, Calm).
-- Displays song details including album cover, artist, and title.
-- Song previews directly in the chat.
+- Displays song details including album cover, artist, and title, with direct links to play songs on Spotify Web.
 - Fully responsive and visually appealing UI.
 
 #### Technologies
@@ -34,3 +33,13 @@ Make sure your backend API is running at [http://localhost:8000/suggest]
 ```bash
 pip install -r requirements.txt
 uvicorn backend.app:app --reload --port 8000
+```
+
+#### Docker
+You can run this app using Docker without setting up dependencies locally.
+
+Pull the images from Docker Hub
+```bash
+docker pull nisharajay/moodify-chat-backend:latest
+docker pull nisharajay/moodify-chat-frontend:latest
+```
