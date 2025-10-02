@@ -6,7 +6,7 @@ from langchain.schema import Document
 from difflib import SequenceMatcher
 import warnings
 import random
-from scripts.spotify_auth import get_spotify_preview
+from backend.scripts.spotify_auth import get_spotify_preview
 
 warnings.filterwarnings("ignore", category=UserWarning, module="langchain")
 

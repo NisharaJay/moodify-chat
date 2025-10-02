@@ -2,12 +2,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
-from scripts.chatbot import suggest_song  # import from model.py
+from .scripts.chatbot import suggest_song
 
-# ------------------------------ FastAPI Setup ------------------------------
+#FastAPI Setup
 app = FastAPI()
 
-# Allow requests from your frontend (React on localhost:3000)
+# Allow requests from frontend (localhost:3000)
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
