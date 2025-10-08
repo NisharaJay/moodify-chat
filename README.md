@@ -43,3 +43,8 @@ Pull the images from Docker Hub
 docker pull nisharajay/moodify-chat-backend:latest
 docker pull nisharajay/moodify-chat-frontend:latest
 ```
+
+#### App Preview
+<img width="500" height="auto" alt="Screenshot (107)" src="https://github.com/user-attachments/assets/51a871aa-d641-4da2-bfc2-b7962a38569c" />
+
+
